@@ -1,0 +1,11 @@
+import streamlit as st
+import pandas as pd
+
+df = pd.read_csv("../output/anomalies/output.csv")
+
+st.title("📈 Food Price Anomaly Detector")
+commodity = st.selectbox("Select commodity", df['commodity'].unique())
+
+filtered = df[df['commodity'] == commodity]
+st.line_chart(filtered[['date','price']].set_index('date'))
+st.dataframe(filtered[filtered['is_anomaly']==1])

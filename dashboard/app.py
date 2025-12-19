@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
+import os
 
-df = pd.read_csv("../output/anomalies/output.csv")
+
+df = pd.read_csv(r"C:\Users\siddi\projects\food-price-anomaly-detector\output\anomalies\output.csv")
+# df.head()
 
 st.title("📈 Food Price Anomaly Detector")
 commodity = st.selectbox("Select commodity", df['commodity'].unique())
